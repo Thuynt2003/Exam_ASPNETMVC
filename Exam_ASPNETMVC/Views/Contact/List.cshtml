@@ -1,0 +1,47 @@
+﻿@model List<Exam_ASPNETMVC.Entity.Contacts>
+
+@{
+
+}
+
+<h1>Contact Page</h1>
+<a asp-controller="Contact" asp-action="Create">Create new Contact</a>
+@using (Html.BeginForm("List", "Contact", FormMethod.Post))
+{
+    <div class="input-group">
+        <div class="form-outline">
+            <input type="search" id="form1" class="form-control" name="Search" />
+            <label class="form-label" for="form1">Search</label>
+        </div>
+        <button type="submit" class="btn btn-primary">
+            Search
+        </button>
+    </div>
+}
+
+<div class="col-6">
+    <table class="table">
+        <thead>
+        <th>Id</th>
+        <th>Contact Name</th>
+        <th>Contact Number</th>
+        <th>Group Name</th>
+        <th>Hire Date</th>
+        <th>Birthday</th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Contact_Name</td>
+                    <td>@item.Contact_Number</td>
+                    <td>@item.Group_Name</td>
+                    <td>@item.Hire_Date</td>
+                    <td>@item.Birthday</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,7 +1,14 @@
+using Exam_ASPNETMVC.Entity;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+var connectionString = builder.Configuration.GetConnectionString("Exam_ASPNETMVC");
+builder.Services.AddDbContext<DataContext>(
+    options => options.UseSqlServer(connectionString)
+    );
 
 var app = builder.Build();
 
